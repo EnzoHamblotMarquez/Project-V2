@@ -17,7 +17,7 @@ public class DashManager : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
 
-        dashSpeed = playerController.GetBaseSpeed() * (1 + dashSpeedBoostPercentage / 100); 
+        dashSpeed = playerController.GetBaseSpeed() * (1 + dashSpeedBoostPercentage / 100);
 
         dashInCooldown = false;
     }
@@ -30,7 +30,7 @@ public class DashManager : MonoBehaviour
         }
     }
 
-    private void Update ()
+    private void Update()
     {
         dashCurrentCooldown -= Time.deltaTime;
 

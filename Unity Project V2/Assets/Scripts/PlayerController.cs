@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidbody2D;
 
     [SerializeField]
-    private float baseSpeed; 
+    private float baseSpeed;
     private float currentSpeed;
 
     private DashManager dashManager;
@@ -32,14 +32,11 @@ public class PlayerController : MonoBehaviour
         {
             dashManager.Dash();
         }
-    }
-
-
-    private void FixedUpdate()
-    {
+        
         //Move player's Rigidbody2D
-        playerRigidbody2D.velocity = currentInputedDirection * currentSpeed; //Is " * Time.fixedDeltaTime" needed? !!
+        playerRigidbody2D.velocity = currentInputedDirection * currentSpeed;
     }
+
 
     public float GetBaseSpeed()
     {
