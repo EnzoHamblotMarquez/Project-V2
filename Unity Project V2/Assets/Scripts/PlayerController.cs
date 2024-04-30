@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private DashManager dashManager;
 
+
     private void Start()
     {
         currentSpeed = baseSpeed;

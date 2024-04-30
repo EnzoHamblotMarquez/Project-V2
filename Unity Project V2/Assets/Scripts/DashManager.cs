@@ -13,7 +13,6 @@ public class DashManager : MonoBehaviour
 
     private PlayerController playerController;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -23,7 +22,6 @@ public class DashManager : MonoBehaviour
         dashInCooldown = false;
     }
 
-    // Update is called once per frame
     public void Dash()
     {
         if (!dashInCooldown)
