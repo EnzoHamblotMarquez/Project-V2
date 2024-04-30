@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DashManager : MonoBehaviour
@@ -9,7 +7,7 @@ public class DashManager : MonoBehaviour
     private float dashSpeed;
     [SerializeField] private float dashDuration;
 
-    [SerializeField] private float dashTotalCooldown; //May need it to be higher than dashDuration !!
+    [SerializeField] private float dashTotalCooldown; //Needs to be higher than "dashDuration"
     private float dashCurrentCooldown;
     private bool dashInCooldown;
 
@@ -44,7 +42,7 @@ public class DashManager : MonoBehaviour
         }
     }
 
-    IEnumerator Dashing() //Dash shoud make you advance a certain distance, not just boost your Speed !!
+    IEnumerator Dashing() //Dash shoud make you advance a certain distance, not just boost your "currentSpeed" !!
     {
         dashInCooldown = true;
         dashCurrentCooldown = dashTotalCooldown;

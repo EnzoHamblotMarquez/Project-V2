@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -48,7 +45,7 @@ public class PlayerController : MonoBehaviour
         return baseSpeed;
     }
 
-    public float GetCurrentSpeed() //May me unnecessary !!
+    public float GetCurrentSpeed() //May be unnecessary !!
     {
         return currentSpeed;
     }
