@@ -3,7 +3,9 @@ guid: 1fafb5a0e14cbd941aad49e6df1f53f0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - entryRoom: {fileID: 5073450786462506881, guid: 22579142605c70042874bc5eabf865c7, type: 3}
+  - closedRoom: {fileID: 4112151214301146102, guid: d4d1242ea03f55747816f1a8a024c46b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
