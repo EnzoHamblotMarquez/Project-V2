@@ -5,20 +5,27 @@ public class PlayerController : MonoBehaviour
     private Vector2 currentInputedDirection;
     private Rigidbody2D playerRigidbody2D;
 
-    [SerializeField]
-    private float baseSpeed;
+    public float baseSpeed { get; private set; }
     private float currentSpeed;
 
     private DashManager dashManager;
 
+    private Stats playerStats;
+    private PlayerAttack playerAttack;
+
 
     private void Start()
     {
-        currentSpeed = baseSpeed;
-
         playerRigidbody2D = GetComponent<Rigidbody2D>();
 
         dashManager = GetComponent<DashManager>();
+
+        playerStats = GetComponent<Stats>();
+        playerAttack = GetComponent<PlayerAttack>();
+
+        baseSpeed = playerStats.baseSpeed;
+        
+        currentSpeed = baseSpeed;
     }
 
 
@@ -35,17 +42,12 @@ public class PlayerController : MonoBehaviour
         
         //Move player's Rigidbody2D
         playerRigidbody2D.velocity = currentInputedDirection * currentSpeed;
-    }
 
 
-    public float GetBaseSpeed()
-    {
-        return baseSpeed;
-    }
-
-    public float GetCurrentSpeed() //May be unnecessary !!
-    {
-        return currentSpeed;
+        if (Input.GetAxis("Fire1") > 0)
+        {
+            playerAttack.BaseAttack(playerStats.baseDamage);
+        }
     }
 
     public void SetCurrentSpeed(float currentSpeed)

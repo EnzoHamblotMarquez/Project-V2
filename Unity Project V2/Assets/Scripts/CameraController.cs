@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] Transform player;
 
 
-    void FixedUpdate() //The only way I found to fix the player jiggling while the camera is moving is using "FixedUpdate" CC
+    void FixedUpdate() //Does not work properly if it's in other types of "Update" functions //!
     {
         Vector3 playerPosition = player.transform.position;
         Vector3 cameraPosition = transform.position;

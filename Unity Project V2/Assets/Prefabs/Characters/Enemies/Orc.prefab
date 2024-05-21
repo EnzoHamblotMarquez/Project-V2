@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8254731127164723204}
   m_Layer: 7
   m_Name: Orc
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62dd3c95539ec6d47979f7e48c62af7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseMaxHealth: 3
+  a_baseDamage: 1
   baseSpeed: 5
 --- !u!114 &1723907186807487631
 MonoBehaviour:
@@ -77,7 +79,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5720277353491606258}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -200,6 +202,7 @@ GameObject:
   - component: {fileID: 5720277354388581611}
   - component: {fileID: 5720277354388581610}
   - component: {fileID: 5720277354388581613}
+  - component: {fileID: 5603425233852428174}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -285,7 +288,7 @@ Animator:
   m_GameObject: {fileID: 5720277354388581608}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 3bd9993b186b1344cbef05abe265a6c5, type: 2}
+  m_Controller: {fileID: 9100000, guid: efc03c02ce4129547a81dfb74d066105, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -296,6 +299,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5603425233852428174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5720277354388581608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7484fde7895372b478132aa79430ee15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5720277354642749356
 GameObject:
   m_ObjectHideFlags: 0

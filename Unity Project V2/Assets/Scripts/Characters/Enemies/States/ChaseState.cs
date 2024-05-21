@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class ChaseState : EnemyState
 {
+
+    protected GameObject player;
+    public Vector3 playerPosition { get; private set; }
+
     public override void Enter()
     {
         base.Enter();
+        player = GameObject.FindWithTag("Player");
     }
 
     public override void Do()
@@ -14,10 +19,8 @@ public class ChaseState : EnemyState
         base.Do();
         currentMovement = (playerPosition - transform.position).normalized * baseEnemySpeed;
         enemyRigidBody2D.velocity = currentMovement;
+        
+        playerPosition = player.transform.position;
     }
 
-    public override void Exit()
-    {
-
-    }
 }

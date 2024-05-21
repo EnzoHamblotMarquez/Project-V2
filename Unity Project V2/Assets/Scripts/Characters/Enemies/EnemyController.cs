@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
     bool isPlayerInRadius = false;
 
     EnemyState currentState;
-    bool exitCurrentState = false;
+    EnemyState oldState;
 
 
     protected GameObject player;
@@ -23,18 +23,25 @@ public class EnemyController : MonoBehaviour
 
     private void SelectState()
     {
-        if (isPlayerInRadius && !goBack)
+        if (isPlayerInRadius)
         {
-            currentState = chaseState;
-
-            if ((playerPosition - transform.position).magnitude < 1.3)
+            if (!goBack)
             {
-                currentState = attackState;
+                currentState = chaseState;
+
+                if ((playerPosition - transform.position).magnitude < 1.3)
+                {
+                    currentState = attackState;
+                }
             }
-
-            if (!isPlayerInRadius)
+            else
             {
-                currentState = wanderState;
+                currentState = resetState;
+                
+                if (resetState.isComplete)
+                {
+                    goBack = false;
+                }
             }
 
         }
@@ -44,7 +51,7 @@ public class EnemyController : MonoBehaviour
             {
                 currentState = resetState;
 
-                if (resetState.time < 2)
+                if (resetState.isComplete)
                 {
                     goBack = false;
                 }
@@ -55,7 +62,12 @@ public class EnemyController : MonoBehaviour
             }
         }
 
-        currentState.Enter();
+        if (oldState != currentState)
+        {
+            oldState.Exit();
+            currentState.Enter();
+            oldState = currentState;
+        }
     }
 
     private void Start()
@@ -68,12 +80,13 @@ public class EnemyController : MonoBehaviour
         resetState = GetComponent<ResetState>();
 
         currentState = wanderState;
+        oldState = resetState;
     }
 
     private void Update()
     {
         playerPosition = player.transform.position;
-        isPlayerInRadius = (playerPosition - transform.position).magnitude < 10;
+        isPlayerInRadius = (playerPosition - transform.position).magnitude < 5;
 
         SelectState();
         currentState.Do();
@@ -81,9 +94,8 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("RoomTrigger"))
-        {
-            resetState.direction = transform.position - collision.gameObject.transform.position;
+        if ( !collision.gameObject.CompareTag("Player"))
+        {            
             goBack = true;
         }
 

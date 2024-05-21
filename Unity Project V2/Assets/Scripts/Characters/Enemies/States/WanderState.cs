@@ -1,34 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WanderState : EnemyState
 {
+    bool timeToChangeDirection;
+
+
     public override void Enter()
     {
         base.Enter();
+
+        timeToChangeDirection = true;
     }
 
     public override void Do()
-    { 
-        enemyRigidBody2D.velocity = Vector3.up * baseEnemySpeed;
-
-        if (time > 2)
-        {
-            enemyRigidBody2D.velocity = Vector3.right * baseEnemySpeed;
-        }
-        if (time > 4)
-        {
-            enemyRigidBody2D.velocity = Vector3.down * baseEnemySpeed;
-        }
-        if (time > 6)
-        {
-            enemyRigidBody2D.velocity = Vector3.left * baseEnemySpeed;
-        }
-    }
-
-    public override void Exit() 
     {
+        base.Do();
+
+        if (timeToChangeDirection)
+        {
+            enemyRigidBody2D.velocity = ChooseDirection() * baseEnemySpeed / 4;
+            StartCoroutine(ChangeDirectionCooldown());
+        }
 
     }
+
+    Vector3 ChooseDirection()
+    {
+        int selector;
+
+        selector = Random.Range(0, 7);
+
+        switch (selector)
+        {
+            case 0: return Vector3.left;
+            case 1: return Vector3.down;
+            case 2: return Vector3.right;
+            case 3: return Vector3.up;
+
+            default: return Vector3.zero;
+        }
+    }
+
+    IEnumerator ChangeDirectionCooldown ()
+    {
+        timeToChangeDirection = false;
+
+        yield return new WaitForSeconds(1);
+
+        timeToChangeDirection = true;
+    }
+
 }

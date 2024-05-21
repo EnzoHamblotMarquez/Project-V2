@@ -4,7 +4,7 @@ using UnityEngine;
 public class DashManager : MonoBehaviour
 {
     [SerializeField] private float dashSpeedBoostPercentage;
-    private float dashSpeed;
+    private float dashSpeed; 
     [SerializeField] private float dashDuration;
 
     [SerializeField] private float dashTotalCooldown; //Needs to be higher than "dashDuration"
@@ -17,7 +17,7 @@ public class DashManager : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
 
-        dashSpeed = playerController.GetBaseSpeed() * (1 + dashSpeedBoostPercentage / 100);
+        ///dashSpeed = playerController.baseSpeed * (1 + dashSpeedBoostPercentage / 100); //!
 
         dashInCooldown = false;
     }
@@ -38,9 +38,10 @@ public class DashManager : MonoBehaviour
         {
             dashInCooldown = false;
         }
+        dashSpeed = playerController.baseSpeed * (1 + dashSpeedBoostPercentage / 100); //Does not work if it's in the "Start" function //!
     }
 
-    IEnumerator Dashing() //Dash shoud make you advance a certain distance, not just boost your "currentSpeed" !!
+    IEnumerator Dashing() 
     {
         dashInCooldown = true;
         dashCurrentCooldown = dashTotalCooldown;
@@ -49,7 +50,7 @@ public class DashManager : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration);
 
-        playerController.SetCurrentSpeed(playerController.GetBaseSpeed());
+        playerController.SetCurrentSpeed(playerController.baseSpeed);
     }
 
 }

@@ -11,11 +11,12 @@ public class AttackState : EnemyState
 
     public override void Do()
     {
+        base.Do();
         enemyRigidBody2D.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public override void Exit()
     {
-        ///enemyRigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        enemyRigidBody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 }
