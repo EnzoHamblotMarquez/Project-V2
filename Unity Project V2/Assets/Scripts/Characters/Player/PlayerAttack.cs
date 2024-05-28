@@ -64,6 +64,9 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator Attacking()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.slash);
+
+
         isAttacking = true;
         circleCollider.enabled = true;
 
