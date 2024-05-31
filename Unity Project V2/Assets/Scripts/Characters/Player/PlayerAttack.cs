@@ -64,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator Attacking()
     {
-        AudioManager.instance.PlaySFX(AudioManager.instance.slash);
+        AudioManager.instance.PlaySFX(AudioManager.instance.slash, 5.0f);
 
 
         isAttacking = true;

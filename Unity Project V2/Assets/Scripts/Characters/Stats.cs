@@ -31,11 +31,11 @@ public class Stats : MonoBehaviour
             Debug.Log("Death");
             isDead = true;
 
-            AudioManager.instance.PlaySFX(AudioManager.instance.die);
+            AudioManager.instance.PlaySFX(AudioManager.instance.die, 3.0f);
         }
         else
         {
-            AudioManager.instance.PlaySFX(AudioManager.instance.damage);
+            AudioManager.instance.PlaySFX(AudioManager.instance.damage, 1.0f);
         }
 
         if (isDead)

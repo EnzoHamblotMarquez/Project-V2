@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -20,24 +21,29 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
         {
             Destroy(gameObject);
         }
 
-        instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        musicSource.clip = backgroundMusic;
+
     }
+
     private void Start()
     {
-        musicSource.clip = backgroundMusic;
-        musicSource.Play();
-
-        DontDestroyOnLoad(gameObject);
+        sfxSource.volume = 1f;
     }
 
-    public void PlaySFX(AudioClip audioClip)
+    public void PlaySFX(AudioClip audioClip, float volume)
     {
-        sfxSource.pitch = Random.Range(0.1f, 1.2f);
-        sfxSource.PlayOneShot(audioClip);
+        sfxSource.pitch = Random.Range(0.8f, 1.2f);
+        sfxSource.PlayOneShot(audioClip, volume);
     }
 }

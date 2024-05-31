@@ -10,13 +10,17 @@ public class EnemyManager : MonoBehaviour
     List<GameObject> enemies;
     GameObject[] enemiesFound;
 
+
     private void Start()
     {
-        if (instance != null)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
         {
             Destroy(gameObject);
         }
-        instance = this;
 
         enemies = new List<GameObject>();
         DontDestroyOnLoad(gameObject);
@@ -31,10 +35,10 @@ public class EnemyManager : MonoBehaviour
         {
             enemies.Add(enemy);
         }
+    }
 
-        if (enemies.Count == 0)
-        {
-            GameSceneManager.instance.LoadMainScene();
-        }
+    public List<GameObject> GetEnemyList()
+    {
+        return enemies;
     }
 }

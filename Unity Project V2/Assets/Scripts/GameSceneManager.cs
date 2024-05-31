@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameSceneManager : MonoBehaviour
 {
 
     public static GameSceneManager instance;
     Scene currentScene;
+
     
-    private void Start()
+    private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
         }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
         
     }
 
@@ -25,13 +29,26 @@ public class GameSceneManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
 
-        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             LoadTestScene();
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            LoadMainScene();
+            //Load End Menu
+        }
+
+        if (EnemyManager.instance.GetEnemyList().Count == 0 || Input.GetKeyDown(KeyCode.R))
+        {
+            LoadMainMenu();
+        }
+    }
+
+    public void LoadMainMenu()
+    {
+        if (currentScene.name != "Main Menu")
+        {
+            SceneManager.LoadScene("Main Menu");
         }
     }
 
@@ -39,7 +56,7 @@ public class GameSceneManager : MonoBehaviour
     {
         if (currentScene.name != "Test Scene")
         {
-        //SceneManager.LoadScene("Test Scene"); //LoadMainScene not working properly after going back to Test Scene once. //!
+        SceneManager.LoadScene("Test Scene");
         }
     }
     public void LoadMainScene()
@@ -49,4 +66,5 @@ public class GameSceneManager : MonoBehaviour
             SceneManager.LoadScene("Main Scene");
         }
     }
+    
 }
