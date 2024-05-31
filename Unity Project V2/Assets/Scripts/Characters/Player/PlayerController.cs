@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis("Fire1") > 0)
         {
-            playerAttack.BaseAttack(playerStats.baseDamage);
+            playerAttack.BaseAttack(playerStats.GetBaseDamage());
         }
     }
 

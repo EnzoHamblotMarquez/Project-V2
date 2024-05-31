@@ -35,7 +35,7 @@ public class GameSceneManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            //Load End Menu
+            //!
         }
 
         if (EnemyManager.instance.GetEnemyList().Count == 0 || Input.GetKeyDown(KeyCode.R))

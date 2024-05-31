@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Stats : MonoBehaviour
 {
     [SerializeField]
-    private int baseMaxHealth;
-    private int currentRemainingHealth;
+    private float baseMaxHealth;
+    public float currentRemainingHealth { get; private set; }
 
     [SerializeField]
-    private int a_baseDamage;
-    public int baseDamage { get; private set; }
+    private int baseDamage;
 
     bool isDead = false;
 
@@ -18,8 +18,6 @@ public class Stats : MonoBehaviour
 
     private void Start() 
     {
-        baseDamage = a_baseDamage;
-
         currentRemainingHealth = baseMaxHealth;
     }
     public void TakeDamage(int damage)
@@ -40,7 +38,24 @@ public class Stats : MonoBehaviour
 
         if (isDead)
         {
-            Destroy(gameObject);
+            if (gameObject.tag == "Enemy")
+            {
+                Destroy(gameObject);
+            }
+            if (gameObject.tag == "Player")
+            {
+                GameSceneManager.instance.LoadMainMenu();
+            }
         }
+    }
+
+    public float GetMaxHealth()
+    {
+        return baseMaxHealth;
+    }
+
+    public int GetBaseDamage()
+    {
+        return baseDamage;
     }
 }

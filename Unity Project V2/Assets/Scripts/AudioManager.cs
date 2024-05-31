@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         sfxSource.volume = 1f;
+        musicSource.volume = 1f;
     }
 
     public void PlaySFX(AudioClip audioClip, float volume)
