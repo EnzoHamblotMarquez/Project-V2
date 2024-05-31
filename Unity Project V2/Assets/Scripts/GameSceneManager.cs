@@ -61,7 +61,7 @@ public class GameSceneManager : MonoBehaviour
     {
         if (currentScene.name != "Test Scene")
         {
-        SceneManager.LoadScene("Test Scene");
+            SceneManager.LoadScene("Test Scene");
         }
     }
     public void LoadMainScene()

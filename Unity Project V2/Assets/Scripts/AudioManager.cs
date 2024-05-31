@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -30,29 +27,11 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
-        musicSource.clip = backgroundMusic;
-
-    }
-
-    private void Start()
-    {
-        sfxSource.volume = 1f;
-        musicSource.volume = 1f;
     }
 
     public void PlaySFX(AudioClip audioClip, float volume)
     {
         sfxSource.pitch = Random.Range(0.8f, 1.2f);
         sfxSource.PlayOneShot(audioClip, volume);
-    }
-
-    public AudioSource GetSFXSource()
-    {
-        return sfxSource;
-    }
-    public AudioSource GetMusicSource()
-    {
-        return musicSource;
     }
 }
