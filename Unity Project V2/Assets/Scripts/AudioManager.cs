@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -46,5 +45,14 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.pitch = Random.Range(0.8f, 1.2f);
         sfxSource.PlayOneShot(audioClip, volume);
+    }
+
+    public AudioSource GetSFXSource()
+    {
+        return sfxSource;
+    }
+    public AudioSource GetMusicSource()
+    {
+        return musicSource;
     }
 }

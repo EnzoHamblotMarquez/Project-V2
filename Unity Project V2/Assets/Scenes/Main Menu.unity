@@ -149,7 +149,7 @@ AudioSource:
   m_GameObject: {fileID: 147507401}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7526286680649892714, guid: 5f17a09e3896da040b24acdfa4ee5fdf, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -465,7 +465,7 @@ AudioSource:
   m_GameObject: {fileID: 684470733}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1795059598893944426, guid: 5f17a09e3896da040b24acdfa4ee5fdf, type: 2}
   m_audioClip: {fileID: 8300000, guid: 62dfbca26c5dee646a26f625a0b38432, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1367,7 +1367,7 @@ GameObject:
   - component: {fileID: 4840304923334597043}
   - component: {fileID: 5305272842486166378}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1607,19 +1607,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1138126041092052154}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4029436608371033194}
-        m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
-        m_MethodName: LoadTestScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7767797139859762745
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -35,10 +32,10 @@ public class GameSceneManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            //!
+            LoadOptionsMenu();
         }
 
-        if (EnemyManager.instance.GetEnemyList().Count == 0 || Input.GetKeyDown(KeyCode.R))
+        if (EnemyManager.instance.GetEnemyList().Count == 0 && SceneManager.GetActiveScene().name == "Test Scene" || Input.GetKeyDown(KeyCode.R))
         {
             LoadMainMenu();
         }
@@ -49,6 +46,14 @@ public class GameSceneManager : MonoBehaviour
         if (currentScene.name != "Main Menu")
         {
             SceneManager.LoadScene("Main Menu");
+        }
+    }
+
+    public void LoadOptionsMenu()
+    {
+        if (currentScene.name != "Options Menu")
+        {
+            SceneManager.LoadScene("Options Menu");
         }
     }
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +17,11 @@ public class ButtonManager : MonoBehaviour
         }
         if (myButtonName == "Options")
         {
-            myButton.onClick.AddListener(GameSceneManager.instance.LoadMainScene);
+            myButton.onClick.AddListener(GameSceneManager.instance.LoadOptionsMenu);
+        }
+        if(myButtonName == "Back")
+        {
+            myButton.onClick.AddListener(GameSceneManager.instance.LoadMainMenu);
         }
         if (myButtonName == "Exit")
         {
