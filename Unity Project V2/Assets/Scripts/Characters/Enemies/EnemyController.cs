@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Transactions;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -11,15 +7,18 @@ public class EnemyController : MonoBehaviour
     public AttackState attackState;
     public ResetState resetState;
 
-    bool goBack = false;
-    bool isPlayerInRadius = false;
+    private bool goBack = false;
+    private bool isPlayerInRadius = false;
 
-    EnemyState currentState;
-    EnemyState oldState;
+    private EnemyState currentState;
+    private EnemyState oldState;
 
 
     protected GameObject player;
     public Vector3 playerPosition { get; private set; }
+
+    public const string enemyTag = "Enemy";
+
 
     private void SelectState()
     {
@@ -37,7 +36,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 currentState = resetState;
-                
+
                 if (resetState.isComplete)
                 {
                     goBack = false;
@@ -94,8 +93,8 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ( !collision.gameObject.CompareTag("Player"))
-        {            
+        if (!collision.gameObject.CompareTag("Player"))
+        {
             goBack = true;
         }
 

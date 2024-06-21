@@ -3,20 +3,33 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    Stats stats;
+    private Stats characterStats;
 
-    public Slider healthBar;
+    private Slider healthBar;
 
     private float healthProgression;
 
     private void Awake()
     {
-        stats = GetComponentInParent<Stats>();
+        characterStats = GetComponentInParent<Stats>();
         healthBar = GetComponent<Slider>();
     }
     private void Update()
     {
-        healthProgression = stats.currentRemainingHealth / stats.GetMaxHealth();
+        healthProgression = characterStats.currentRemainingHealth / characterStats.GetMaxHealth();
         healthBar.value = healthProgression;
     }
+
+    public void ShowHealthBar(bool b)
+    {
+        if (b)
+        {
+            healthBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            healthBar.gameObject.SetActive(false);
+        }
+    }
+
 }

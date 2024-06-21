@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class AttackState : EnemyState
 {
-    GameObject player;
-    Stats playerStats;
+    private GameObject player;
+    private Stats playerStats;
 
-    float timer;
+    private float timer;
 
     public override void Enter()
     {
         base.Enter();
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag(PlayerController.playerTag);
         playerStats = player.GetComponent<Stats>();
 
         enemyStats = GetComponent<Stats>();

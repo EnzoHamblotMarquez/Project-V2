@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoomTrigger
   - Enemy
+  - RoomExitCollider
   layers:
   - Default
   - TransparentFX

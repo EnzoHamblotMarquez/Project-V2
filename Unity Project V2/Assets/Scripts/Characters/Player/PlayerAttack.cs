@@ -1,27 +1,25 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    GameObject player;
-    Rigidbody2D playerRigidbody2D;
+    private GameObject player;
+    private Rigidbody2D playerRigidbody2D;
 
-    CircleCollider2D circleCollider;
-    const float colliderOffset = 0.5f;
+    private CircleCollider2D circleCollider;
+    private const float colliderOffset = 0.5f;
 
-    float attackDuration = 0.25f;
+    private float attackDuration = 0.25f;
 
-    int attackDamage;
+    private int attackDamage;
 
-    bool isAttacking;
+    private bool isAttacking;
 
 
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = gameObject;
         playerRigidbody2D = player.GetComponent<Rigidbody2D>();
 
         circleCollider = player.GetComponentInChildren<CircleCollider2D>();
@@ -70,7 +68,6 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         circleCollider.enabled = true;
 
-        Debug.Log("Attack");
         yield return new WaitForSeconds(attackDuration);
 
         isAttacking = false;

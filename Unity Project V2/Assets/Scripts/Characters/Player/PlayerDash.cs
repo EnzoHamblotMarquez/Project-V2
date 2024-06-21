@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class DashManager : MonoBehaviour
+public class PlayerDash : MonoBehaviour
 {
     [SerializeField] private float dashSpeedBoostPercentage;
-    private float dashSpeed; 
+    private float dashSpeed;
     [SerializeField] private float dashDuration;
 
     [SerializeField] private float dashTotalCooldown; //Needs to be higher than "dashDuration"
     private float dashCurrentCooldown;
-    private bool dashInCooldown;
+    private bool isDashInCooldown;
 
     private PlayerController playerController;
 
@@ -17,14 +17,14 @@ public class DashManager : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
 
-        ///dashSpeed = playerController.baseSpeed * (1 + dashSpeedBoostPercentage / 100); //!
+        dashSpeed = playerController.baseSpeed * (1 + dashSpeedBoostPercentage / 100);
 
-        dashInCooldown = false;
+        isDashInCooldown = false;
     }
 
     public void Dash()
     {
-        if (!dashInCooldown)
+        if (!isDashInCooldown)
         {
             StartCoroutine(Dashing());
         }
@@ -36,14 +36,13 @@ public class DashManager : MonoBehaviour
 
         if (dashCurrentCooldown <= 0)
         {
-            dashInCooldown = false;
+            isDashInCooldown = false;
         }
-        dashSpeed = playerController.baseSpeed * (1 + dashSpeedBoostPercentage / 100); //Does not work if it's in the "Start" function //!
     }
 
-    IEnumerator Dashing() 
+    IEnumerator Dashing()
     {
-        dashInCooldown = true;
+        isDashInCooldown = true;
         dashCurrentCooldown = dashTotalCooldown;
 
         playerController.SetCurrentSpeed(dashSpeed);

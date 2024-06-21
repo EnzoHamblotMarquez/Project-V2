@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,16 +7,29 @@ public class Stats : MonoBehaviour
     private float baseMaxHealth;
     public float currentRemainingHealth { get; private set; }
 
+    private HealthBar healthBar;
+
     [SerializeField]
     private int baseDamage;
 
-    bool isDead = false;
+    private bool isDead = false;
 
     public float baseSpeed;
 
-    private void Start() 
+
+    private void Start()
     {
         currentRemainingHealth = baseMaxHealth;
+        
+        healthBar = GetComponentInChildren<HealthBar>();
+        healthBar.ShowHealthBar(false);
+    }
+    private void Update()
+    {
+        if (currentRemainingHealth < baseMaxHealth)
+        {
+            healthBar.ShowHealthBar(true);
+        }
     }
     public void TakeDamage(int damage)
     {
@@ -26,7 +37,6 @@ public class Stats : MonoBehaviour
 
         if (currentRemainingHealth <= 0)
         {
-            Debug.Log("Death");
             isDead = true;
 
             AudioManager.instance.PlaySFX(AudioManager.instance.die, 3.0f);
@@ -38,11 +48,11 @@ public class Stats : MonoBehaviour
 
         if (isDead)
         {
-            if (gameObject.tag == "Enemy")
+            if (gameObject.tag == EnemyController.enemyTag)
             {
                 Destroy(gameObject);
             }
-            if (gameObject.tag == "Player")
+            if (gameObject.tag == PlayerController.playerTag)
             {
                 GameSceneManager.instance.LoadMainMenu();
             }

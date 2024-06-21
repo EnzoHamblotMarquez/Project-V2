@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    Animator animator;
-    Rigidbody2D characterRigidbody;
-    SpriteRenderer characterSprite;
-    
+    private Animator animator;
+    private Rigidbody2D characterRigidbody;
+    private SpriteRenderer characterSprite;
+
+    private const string runningParameterName = "Running";
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,11 +22,11 @@ public class AnimationController : MonoBehaviour
     {
         if (characterRigidbody.velocity.magnitude != 0)
         {
-            animator.SetBool("Running", true);
+            animator.SetBool(runningParameterName, true);
         }
         else
         {
-            animator.SetBool("Running", false);
+            animator.SetBool(runningParameterName, false);
         }
 
         if (characterRigidbody.velocity.x > 0)

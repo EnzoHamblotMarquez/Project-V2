@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonManager : MonoBehaviour
+public class MenuButtonManager : MonoBehaviour
 {
     public Button myButton;
-    string myButtonName;
+    private string myButtonName;
 
     void Start()
     {
@@ -13,26 +13,21 @@ public class ButtonManager : MonoBehaviour
 
         if (myButtonName == "Play")
         {
-            myButton.onClick.AddListener(GameSceneManager.instance.LoadTestScene);
+            myButton.onClick.AddListener(GameSceneManager.instance.LoadMainScene);
         }
         if (myButtonName == "Options")
         {
             myButton.onClick.AddListener(GameSceneManager.instance.LoadOptionsMenu);
         }
-        if(myButtonName == "Back")
+        if (myButtonName == "Back")
         {
             myButton.onClick.AddListener(GameSceneManager.instance.LoadMainMenu);
         }
         if (myButtonName == "Exit")
         {
-            myButton.onClick.AddListener(OnExitPressed);
+            myButton.onClick.AddListener(GameSceneManager.instance.QuitApplication);
         }
 
-    }
-
-    private void OnExitPressed ()
-    {
-        Application.Quit();
     }
 
 }

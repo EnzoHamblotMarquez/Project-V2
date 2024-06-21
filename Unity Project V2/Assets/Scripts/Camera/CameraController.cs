@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -9,7 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] Transform player;
 
 
-    void FixedUpdate() //Does not work properly if it's in other types of "Update" functions //!
+    void FixedUpdate()
     {
         Vector3 playerPosition = player.transform.position;
         Vector3 cameraPosition = transform.position;

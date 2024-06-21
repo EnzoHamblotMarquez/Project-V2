@@ -5,21 +5,26 @@ public class GameSceneManager : MonoBehaviour
 {
 
     public static GameSceneManager instance;
-    Scene currentScene;
+    private Scene currentScene;
 
-    
+    private const string mainMenuSceneName = "Main Menu";
+    private const string optionsMenuSceneName = "Options Menu";
+    private const string mainSceneName = "Test Scene";
+
+
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-        
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -28,14 +33,14 @@ public class GameSceneManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            LoadTestScene();
+            LoadMainScene();
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             LoadOptionsMenu();
         }
 
-        if (EnemyManager.instance.GetEnemyList().Count == 0 && SceneManager.GetActiveScene().name == "Test Scene" || Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             LoadMainMenu();
         }
@@ -43,33 +48,32 @@ public class GameSceneManager : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        if (currentScene.name != "Main Menu")
+        if (currentScene.name != mainMenuSceneName)
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene(mainMenuSceneName);
         }
     }
 
     public void LoadOptionsMenu()
     {
-        if (currentScene.name != "Options Menu")
+        if (currentScene.name != optionsMenuSceneName)
         {
-            SceneManager.LoadScene("Options Menu");
+            SceneManager.LoadScene(optionsMenuSceneName);
         }
     }
 
-    public void LoadTestScene()
-    {
-        if (currentScene.name != "Test Scene")
-        {
-            SceneManager.LoadScene("Test Scene");
-        }
-    }
     public void LoadMainScene()
     {
-        if (currentScene.name != "Main Scene")
+        if (currentScene.name != mainSceneName)
         {
-            SceneManager.LoadScene("Main Scene");
+            SceneManager.LoadScene(mainSceneName);
         }
     }
-    
+
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
+
 }

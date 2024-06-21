@@ -3,10 +3,10 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    
+
     [Header("AudioSource")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource sfxSource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource sfxSource;
 
     [Header("AudioClips")]
     public AudioClip backgroundMusic;

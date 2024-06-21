@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ResetState : EnemyState
 {
-    internal Vector3 direction;
+    private Vector3 direction;
+
+    public const string roomExitCollidersContainer = "RoomExitColliders";
 
 
     public override void Enter()
     {
         base.Enter();
-        direction = transform.position - GameObject.Find("RoomTriggers").transform.position;
+        direction = transform.position - GameObject.Find(roomExitCollidersContainer).transform.position;
     }
 
     public override void Do()

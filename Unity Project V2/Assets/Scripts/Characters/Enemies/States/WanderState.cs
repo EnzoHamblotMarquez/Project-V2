@@ -1,12 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WanderState : EnemyState
 {
-    bool timeToChangeDirection;
+    private bool timeToChangeDirection;
 
 
     public override void Enter()
@@ -45,7 +42,7 @@ public class WanderState : EnemyState
         }
     }
 
-    IEnumerator ChangeDirectionCooldown ()
+    IEnumerator ChangeDirectionCooldown()
     {
         timeToChangeDirection = false;
 

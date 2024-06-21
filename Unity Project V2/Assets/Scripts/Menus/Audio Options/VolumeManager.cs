@@ -7,7 +7,7 @@ public class VolumeManager : MonoBehaviour
     [SerializeField]
     private AudioMixer audioMixer;
 
-    [SerializeField] 
+    [SerializeField]
     private Slider masterVolume;
     [SerializeField]
     private Slider SFXVolume;
